@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
-
+import {reqResApi} from '../api/reqRes'
 const Usuarios = () => {
   
     useEffect(() => {
       //llamado a la API
-    
+        reqResApi.get('/users').then(response => {
+            console.log(response);
+
+        }).catch(console.log);
      
     }, [])
     
