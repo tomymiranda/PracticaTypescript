@@ -1,21 +1,11 @@
-import React, { useEffect } from 'react'
-import {reqResApi} from '../api/reqRes'
-import { ReqResListado, DataUsuarios } from "../interfaces/reqRes";
-
+import { DataUsuarios } from "../interfaces/reqRes";
+import { useUsuario } from '../hooks/useUsuario';
 const Usuarios = () => {
-    const [usuariosDelSistema, setUsuarios] = React.useState<DataUsuarios[]>([]);
+   
+    const { usuariosDelSistema,fetchUsuarios } = useUsuario();
 
-    useEffect(() => {
-      //llamado a la API
-        reqResApi.get<ReqResListado>('/users').then(response => {
-            console.log(response.data.data);
-            setUsuarios(response.data.data);
 
-        }).catch(console.log);
-     
-    }, [])
-    
-    const cargarUsuarios = ({id,first_name,last_name,email,avatar}: DataUsuarios) => {
+    const renderUsuarios = ({id,first_name,last_name,email,avatar}: DataUsuarios) => {
         return (
           <tr key={id.toString()}>
             <td>
@@ -38,10 +28,13 @@ const Usuarios = () => {
               <th>Email</th>
             </tr>
           </thead>
-          <tbody>{usuariosDelSistema.map(cargarUsuarios)}</tbody>
+          <tbody>{usuariosDelSistema.map(renderUsuarios)}</tbody>
         </table>
+        <button className="btn btn-primary" onClick={fetchUsuarios}>
+          Siguiente
+        </button>
       </>
     );
 }
 
-export default Usuarios
+export default Usuarios;
