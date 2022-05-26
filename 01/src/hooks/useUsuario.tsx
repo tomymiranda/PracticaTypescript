@@ -5,7 +5,7 @@ import { DataUsuarios, ReqResListado } from "../interfaces/reqRes";
 export const useUsuario = () => {
    const [usuariosDelSistema, setUsuarios] = React.useState<DataUsuarios[]>([]);
 
-   const paginaRef = useRef(0);
+   const paginaRef = useRef(1);
    
    useEffect(() => {
      //llamado a api  
