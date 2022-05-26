@@ -25,14 +25,27 @@ export const useUsuario = () => {
        setUsuarios( resp.data.data );
        console.log(resp.data.data);
        console.log(paginaRef);
-       paginaRef.current ++;
+       
      } else {
        alert('No hay mas usuarios');
      }
    };
 
-   return{
-        usuariosDelSistema,
-        fetchUsuarios
+   const paginaAnterior = () => {
+    if (paginaRef.current > 1){
+      paginaRef.current--;
+      fetchUsuarios();  
+    } 
    }
+
+   const paginaSiguiente = () => {
+    paginaRef.current++;
+    fetchUsuarios();
+   }
+
+   return {
+     usuariosDelSistema,
+     paginaAnterior,
+     paginaSiguiente,
+   };
 }
