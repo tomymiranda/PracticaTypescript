@@ -2,6 +2,7 @@ import React from 'react'
 import TiposBasicos from '../src/typescript/TiposBasicos'
 import Contador from './components/Contador';
 import ContadorConHook from './components/ContadorConHook';
+import { Formulario } from './components/Formulario';
 import Login from './components/Login';
 import Usuarios from './components/Usuarios';
 import Funciones from './typescript/Funciones';
@@ -19,7 +20,8 @@ const App = () => {
       {/*<Contador/> */}
       {/*<ContadorConHook/>*/}
       {/*<Login/>*/}
-      <Usuarios/>
+      {/*<Usuarios/>*/}
+      <Formulario/>
     </div>
       
   )
